@@ -1,14 +1,30 @@
 # Análise da produtividade e do lucro das culturas agrícolas ao longo dos anos no Brasil.
-Esse projeto tem como objetivo utilizar a ferramenta Excel para analisar dados de culturas agrícolas disponíveis em um dataset do IBGE. Os dados são referentes a 2024.
+Esse projeto tem como objetivo utilizar a ferramenta Excel para analisar dados de sensores de agricultura inteligente, buscando problemáticas para tomada de decisão. Esses dados são de fazendas localizadas em regiões como Índia, EUA e África.
 
 # Detalhes do conjunto de dados
-O dataset "Brazilian E-Commerce Public Dataset by Olist" possui várias tabelas, para esse projeto foram utilizadas:
-- olist_orders_dataset: Pedidos
-- olist_customers_dataset: Clientes
-- olist_products_dataset: Produtos
-- olist_sellers_dataset: Vendedores
-- olist_order_items_dataset: Itens(Seria a venda específica para cada cliente)
-- olist_order_payments_dataset: Pagamentos
+O dataset utilizado possui várias tabelas, para esse projeto foram utilizadas:
+- farm_id: Identificador único para cada fazenda inteligente (ex.: FARM0001)
+- region: Região geográfica (ex.: Norte da Índia, Sul dos EUA)
+- crop_type: Culturas cultivadas: Trigo, Arroz, Milho, Algodão, Soja
+- soil_moisture_%: Teor de umidade do solo em porcentagem
+- soil_pH: Nível de pH do solo (faixa típica de 5,5 a 7,5)
+- temperature_C: Temperatura média durante o ciclo da cultura (em °C)
+- rainfall_mm: Precipitação total recebida em mm
+- humidity_%: Nível médio de umidade em porcentagem
+- sunlight_hours: Média de horas de luz solar recebidas por dia
+- irrigation_type: Tipo de irrigação: Gotejamento, Aspersão, Manual, Nenhuma
+- fertilizer_type: Fertilizantes utilizados: Orgânicos, Inorgânicos, Mistos
+- pesticide_usage_ml: Uso diário de pesticidas em mililitros
+- sowing_date: Data em que a cultura foi semeada
+- harvest_date: Data da colheita
+- total_days: Duração do ciclo de crescimento da cultura (colheita - semeadura)
+- yield_kg_per_hectare: Variável alvo: Produtividade da cultura em quilogramas por hectare
+- sensor_id: ID do sensor IoT que reporta os dados
+- timestamp: Carimbo de data/hora aleatório do ciclo em que a captura de dados foi registrada.
+- latitude: Latitude da localização da fazenda (intervalo de 10,0 a 35,0)
+- longitude: Longitude da localização da fazenda (intervalo de 70,0 a 90,0)
+- NDVI_index: Índice de Vegetação por Diferença Normalizada (0,3 - 0,9)
+- crop_disease_status: estado_doenca
 
 # Tabelas
 1. Pedidos:
