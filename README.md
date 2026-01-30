@@ -6,106 +6,39 @@ O dataset utilizado possui várias tabelas, para esse projeto foram utilizadas:
 - farm_id: Identificador único para cada fazenda inteligente (ex.: FARM0001)
 - region: Região geográfica (ex.: Norte da Índia, Sul dos EUA)
 - crop_type: Culturas cultivadas: Trigo, Arroz, Milho, Algodão, Soja
-- soil_moisture_%: Teor de umidade do solo em porcentagem
-- soil_pH: Nível de pH do solo (faixa típica de 5,5 a 7,5)
-- temperature_C: Temperatura média durante o ciclo da cultura (em °C)
 - rainfall_mm: Precipitação total recebida em mm
-- humidity_%: Nível médio de umidade em porcentagem
-- sunlight_hours: Média de horas de luz solar recebidas por dia
 - irrigation_type: Tipo de irrigação: Gotejamento, Aspersão, Manual, Nenhuma
 - fertilizer_type: Fertilizantes utilizados: Orgânicos, Inorgânicos, Mistos
 - pesticide_usage_ml: Uso diário de pesticidas em mililitros
-- sowing_date: Data em que a cultura foi semeada
-- harvest_date: Data da colheita
-- total_days: Duração do ciclo de crescimento da cultura (colheita - semeadura)
 - yield_kg_per_hectare: Variável alvo: Produtividade da cultura em quilogramas por hectare
-- sensor_id: ID do sensor IoT que reporta os dados
-- timestamp: Carimbo de data/hora aleatório do ciclo em que a captura de dados foi registrada.
-- latitude: Latitude da localização da fazenda (intervalo de 10,0 a 35,0)
-- longitude: Longitude da localização da fazenda (intervalo de 70,0 a 90,0)
 - NDVI_index: Índice de Vegetação por Diferença Normalizada (0,3 - 0,9)
 - crop_disease_status: estado_doenca
 
-# Tabelas
-1. Pedidos:
-   - ID_Pedido
-   - ID_Transacao_Cliente
-   - Status
-   - Data_Compra
-   - Data_Aprovacao
-   - Data_Entrega_Cliente
-   - Data_Entrega_Transportadora
-   - Data_Estimada_Entrega
-   Medidas:
-   - % Entrega no Prazo
-   - Dias de Entrega
-   - Dias Deslocamento(Transportadora)
-   - Dias Processamento
-   - Pedido com Atraso
-   - Pedidos no Prazo
-   - Peso de Frete (%)
-2. Produtos
-   - ID_Produto
-   - Categoria
-3. Clientes
-   - ID_Unico_Cliente
-   - ID_Transacao_Cliente
-   - Estado_Cliente
-4. Vendedores
-   - ID do Vendedor
-   - UF do Vendedor
-5. Pagamentos
-   - ID_Pedido
-   - Tipo_Pagamento
-   Medida criada:
-   - Total Pago
-  Coluna criada:
-   - Valor_Pagamento
-6. Itens
-   - ID_Pedido
-   - ID_Produto
-   - ID do Vendedor
-   Colunas criadas:
-   - Preço
-   - Valor_Frete
-   - Valor_Total_Item
-   Medidas criadas:
-   - Ticket Médio
-   - Faturamento Total
-7. Filtro_regiao(Permite o agrupamento dos estados por região).
-   - Região
-   - UF
-8. Calendário(Essa tabela foi criada)
-   - Mes_Nome
-   Colunas criadas:
-   - Data
-   - Ano
+# Nome das tabelas
+- ID_Fazenda
+- Região
+- Tipo_Cultura
+- Chuva_mm
+- Tipo_Irrigação
+- Tipo_Fertilizante
+- Uso_Pesticida_ml
+- Rendimento_kg_ha
+- Índice_Saude_NVDI
+- Eficiência Hídrica
+- Eficiência de Pesticida
   
 
-
 # Investigações
-1. Qual é a quantia de receita que está passando pela empresa? A empresa está crescendo, estagnando ou decaindo? (Janeiro e dezembro)
-2. Quais categorias estão gerando mais receita? Essas categorias possuem um ticket médio alto?
-3. Quais formas de pagamento estão sendo mais utilizadas pelos clientes e por que?
-4. Quais estados lucram mais pra empresa?
-5. Quantos dias o cliente espera pelo produto? O dia da entrega está passando do prazo? Mesmo após o prazo, a empresa está conseguindo entregar mais rápido?
-6. Quais estados possuem mais atraso de entrega? Os culpados são a transportadora que demora para enviar ou o vendedor?
-7. Os fretes mais caros estão entregando mais rapidamente conforme essa promessa?
-
+1. Encontrar a eficiência hídrica e de pesticida para diferentes plantas e seus devidos filtros para responder o quanto a cultura produz por litro de água e pesticida, a fim de avaliar a produtividade.
+2. Avaliar desperdício de recurso hídrico e de agrotóxicos por cultura, dessa forma é possível verificar o quanto de recursos a empresa está jogando fora sem trazer retorno em produção. Essa análise acaba entrando em métricas ambientais, já que se há desperdício, estão gastando mais dinheiro e poluindo o solo (no caso do agrotóxico) sem necessidade.
+3. Analisar as eficiências entre si para encontrar qual cultura melhor aproveita os recursos,
+ 
 # Visão Geral dos Dashboards
 Dashboard de análise das vendas:
-- KPIs(indicador chave de desempenho) de faturamento total(total de renda que passou pela empresa) e ticket médio(valor médio de cada pedido).
-- Gráfico de Área: Evolução mensal do faturamento de 2016 até 2018.
-- Gráfico de Rosca: Formas de pagamento mais utilizadas.
-- Gráfico de barras empilhadas: Categorias que geram mais receita e Faturamento total por Estado.
-- Filtro para os anos 2016, 2017 e 2018.
-Dashboard de análise logística:
-- KPIs mostrando o total de dias que demora para a entrega, porcentagem de pedidos atrasados, peso do frete no valor do pedido em porcentagem e valor em porcentagem da entrega dentro do prazo.
-- Cartões para filtro de mês e região.
-- Gráfico de barras indicando os estados que possuem mais atraso
-- Matriz indicando a relação entre Estado do Vendedor e Estado do Comprador.
-- Gráfico de barras mostrando os responsáveis pelos atrasados (Vendedor ou Transportadora)
-- Gráfico de Dispersão relacionando valor do frete e quantidade de dias até a entrega.
+- KPIs(indicador chave de desempenho) de rendimento médio, quantidade de fazendas, eficiência hídrica e de pesticida.
+- Gráfico de Combinação Personalizada: Mostra as eficiência de chuva e agrotóxico.
+- Gráfico de Colunas Agrupadas: 3 gráfico que evidenciam o desperdício dos dois recursos e 1 gráfico que mostra as culturas mais rentáveis.
+
 # Principais Insights
 1. O faturamento mensal da empresa depende de eventos como a Black Friday, uma vez que há um grande pico de receita em novembro. Em contrapartida, janeiro apresenta o menor faturamento registrado, baseando-se no ano de 2017. Na logística, os atrasos são altos em novembro, o que mostra que a empresa não está conseguindo lidar com o volume de pedidos nessa época do ano.
 2. Há pouca participação no faturamento total por estados das regiões Nordeste e Norte entre as dez regiões com maior faturamento. Isso mostra que a Olist ainda não conquistou essas regiões em razão da logística da transportadora, já que esta é, a princípio, a culpada pelos atrasos — sendo a região Nordeste a que possui os maiores índices de demora.
